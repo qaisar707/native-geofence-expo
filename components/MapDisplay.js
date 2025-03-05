@@ -1,52 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+  Dimensions,
+  Image,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import * as Location from "expo-location";
-import { auth } from "../config";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { Header } from '../components/Header.js'
-import { SearchBar } from "../components/SearchBar.js";
+import MapView, { Marker } from "react-native-maps";
 
-export const HomeScreen = () => {
-  const [user, setUser] = useState(null);
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+
+export const MapDisplay = () => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [initialRegion, setInitialRegion] = useState(null);
 
   useEffect(() => {
-    const authInstance = getAuth();
-    const unsubscribe = onAuthStateChanged(authInstance, (user) => {
-      setUser(user || "Guest");
-    });
-    return unsubscribe;
-  }, []);
-
-  useEffect(() => {
-    (async () => {
+    const getLocation = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         console.log("Permission to access location was denied");
         return;
       }
+
       let location = await Location.getCurrentPositionAsync({});
       setCurrentLocation(location.coords);
+
       setInitialRegion({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       });
-    })();
-  }, []);
+    };
 
-  const handleLogout = () => {
-    signOut(auth).catch((error) => console.log("Error logging out: ", error));
-  };
+    getLocation();
+  }, []);
 
   return (
     <View style={styles.container}>
-      {/* Header with Search Bar */}
-      <SearchBar />
-      {/* Map View */}
       {initialRegion && (
         <MapView style={styles.map} initialRegion={initialRegion}>
           {currentLocation && (
@@ -60,6 +55,7 @@ export const HomeScreen = () => {
           )}
         </MapView>
       )}
+      {/* Rest of your code */}
     </View>
   );
 };
@@ -67,8 +63,11 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   map: {
-    flex: 1,
+    width: "80%",
+    height: "50%",
   },
 });

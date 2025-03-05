@@ -2,7 +2,7 @@ import "dotenv/config";
 
 export default {
   expo: {
-    name: "Expo Firebase Starter",
+    name: "GeoFence",
     slug: "expo-firebase",
     privacy: "public",
     platforms: ["ios", "android"],
@@ -18,8 +18,14 @@ export default {
       fallbackToCacheTimeout: 0,
     },
     assetBundlePatterns: ["**/*"],
+    android: {
+      "permissions": ["ACCESS_FINE_LOCATION"]
+    },
     ios: {
-      supportsTablet: true,
+      infoPlist: {
+        "NSLocationWhenInUseUsageDescription": "This app uses your location to show it on the map.",
+        supportsTablet: true,
+      }
     },
     extra: {
       apiKey: process.env.API_KEY,

@@ -5,9 +5,10 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { View, TextInput, Logo, Button, FormErrorMessage } from "../components";
-import { Images, Colors, auth } from "../config";
+import { Images, auth } from "../config";
 import { useTogglePasswordVisibility } from "../hooks";
 import { loginValidationSchema } from "../utils";
+import colors from "../utils/colors"; // Import your custom colors
 
 export const LoginScreen = ({ navigation }) => {
   const [errorState, setErrorState] = useState("");
@@ -20,14 +21,16 @@ export const LoginScreen = ({ navigation }) => {
       setErrorState(error.message)
     );
   };
+
   return (
     <>
       <View isSafe style={styles.container}>
         <KeyboardAwareScrollView enableOnAndroid={true}>
           {/* LogoContainer: consist app logo and screen title */}
           <View style={styles.logoContainer}>
-            <Logo uri={Images.logo} />
-            <Text style={styles.screenTitle}>Welcome back!</Text>
+            <Logo uri={Images.logo}  />
+            
+            <Text style={styles.screenTitle}>Welcome</Text>
           </View>
           <Formik
             initialValues={{
@@ -107,11 +110,6 @@ export const LoginScreen = ({ navigation }) => {
           />
         </KeyboardAwareScrollView>
       </View>
-
-      {/* App info footer */}
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Expo Firebase Starter App</Text>
-      </View>
     </>
   );
 };
@@ -119,20 +117,21 @@ export const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: colors.WHITE,
     paddingHorizontal: 12,
   },
   logoContainer: {
+    marginTop:100,
     alignItems: "center",
   },
   screenTitle: {
     fontSize: 32,
     fontWeight: "700",
-    color: Colors.black,
-    paddingTop: 20,
+    color: colors.BLACK,
+    // paddingTop: 20,
   },
   footer: {
-    backgroundColor: Colors.white,
+    backgroundColor: colors.WHITE,
     paddingHorizontal: 12,
     paddingBottom: 48,
     alignItems: "center",
@@ -140,20 +139,20 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 14,
     fontWeight: "700",
-    color: Colors.orange,
+    color: colors.PRIMARY, // Use your app's primary color
   },
   button: {
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 8,
-    backgroundColor: Colors.orange,
+    backgroundColor: colors.PRIMARY, // Use your app's primary color
     padding: 10,
     borderRadius: 8,
   },
   buttonText: {
     fontSize: 20,
-    color: Colors.white,
+    color: colors.WHITE,
     fontWeight: "700",
   },
   borderlessButtonContainer: {

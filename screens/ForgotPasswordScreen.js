@@ -6,6 +6,7 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { passwordResetSchema } from "../utils";
 import { Colors, auth } from "../config";
 import { View, TextInput, Button, FormErrorMessage } from "../components";
+import colors from "../utils/colors";
 
 export const ForgotPasswordScreen = ({ navigation }) => {
   const [errorState, setErrorState] = useState("");
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 8,
-    backgroundColor: Colors.orange,
+    backgroundColor: colors.PRIMARY,
     padding: 10,
     borderRadius: 8,
   },
