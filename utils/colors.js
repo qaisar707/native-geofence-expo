@@ -1,14 +1,28 @@
+
 export default {
-    PRIMARY: "#6857E8",       // Primary purple
-    LIGHT_PRIMARY: "#C2BAFF", // Light purple
-    WHITE: "#FFFFFF",         // White
-    BLACK: "#000000",         // Black
-    GRAY_PURPLE: "#DCD0FF",   // Light gray-purple
-    RED: "#FF0000",           // Red for errors or alerts
-    GREEN: "#00FF00",         // Green for success
-    BLUE: "#0000FF",          // Blue for links or info
-    YELLOW: "#FFFF00",        // Yellow for warnings
-    ORANGE: "#FFA500",
-    GRAY: "#91a3b0",
-    LIGHT_GRAY:"#dcdcdc"
+    PRIMARY: "#6857E8",       // Main brand color
+    SECONDARY: "#4CAF50",     // Green for secondary actions
+    PURPLE: "#9C27B0",        // Accent color
+    GREEN: "#4CAF50",         // Success color
+    ORANGE: "#FF9800",        // Warning/attention
+    RED: "#F44336",           // Error/destructive
+    WHITE: "#FFFFFF",
+    BLACK: "#212121",
+    GRAY: "#757575",
+    LIGHT_GRAY: "#BDBDBD",
+    LIGHT_PRIMARY: "#C2BAFF",  // Light purple
+    FENCE_COLORS: [
+        "rgba(74, 0, 224, 0.2)",   // Deep purple (matches PRIMARY)
+        "rgba(142, 45, 226, 0.2)", // Vibrant purple (matches SECONDARY)
+        "rgba(255, 23, 68, 0.2)",  // Red (matches RED)
+        "rgba(0, 184, 212, 0.2)",  // Cyan
+        "rgba(102, 187, 106, 0.2)" // Green
+    ],
+    FENCE_STROKE_COLORS: [
+        "rgba(74, 0, 224, 0.8)",
+        "rgba(142, 45, 226, 0.8)",
+        "rgba(255, 23, 68, 0.8)",
+        "rgba(0, 184, 212, 0.8)",
+        "rgba(102, 187, 106, 0.8)"
+    ]
 };

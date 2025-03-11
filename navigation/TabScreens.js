@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { MaterialIcons } from "@expo/vector-icons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { HomeScreen, Profile, Analytics, Support } from "../screens";
+import { HomeScreen, MapScreen,Profile, Analytics, Support } from "../screens";
 import colors from "../utils/colors";
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +27,7 @@ export const TabScreens = () => (
   >
     <Tab.Screen
       name="Home"
-      component={HomeScreen}
+      component={MapScreen}
       options={{
         tabBarLabel: "Home",
         tabBarIcon: ({ color, size }) => (
